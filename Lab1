@@ -1,0 +1,18 @@
+    rnd = list(range(len(s)))
+    random.shuffle(rnd)  # перемешивание чисел
+    f = open('result.txt', 'w')
+
+    for i in range(len(s)):
+        if len(s[i][1]) > 30:  # подсчет колличсетва названий длиннее 30
+            c += 1
+        index = s[i][4].lower().find(book.lower())
+        if index != -1 and int(s[i][6][6:10]) >= 2018:  # поиск книги по автору
+            print('Your book:', s[i])
+            flag = 1
+        if i < 20:  # запись значений в файл
+            f.write(f'{i + 1}) {s[rnd[i]][4]}. "{s[rnd[i]][1]}" - {s[rnd[i]][6][6:10]}\n')
+
+    if flag == 0: print('Nothing found')  # если ничего не нашлось
+    print('Колличество записей:', len(s))
+    print('Колличество названий длиннее 30:', c)
+    f.close()
