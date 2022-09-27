@@ -1,3 +1,13 @@
+import csv, random
+
+c = flag = 0  # счетчик и флаг
+
+with open('books.csv') as csvfile:
+    table = csv.reader(csvfile, delimiter=';')
+    s = list(table)[1:]  # список строк
+
+    book = input('Search for:')
+
     rnd = list(range(len(s)))
     random.shuffle(rnd)  # перемешивание чисел
     f = open('result.txt', 'w')
